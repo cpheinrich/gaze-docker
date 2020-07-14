@@ -7,9 +7,10 @@ This repository includes a few helper scripts for running the dockerized Gaze ML
 1) Install the Docker desktop application:   
     --> Mac: https://docs.docker.com/docker-for-mac/install/    
     --> Windows: https://docs.docker.com/docker-for-windows/install/    
-   **NOTE**: if you are unable to install Docker this may be because you have an older machine in which case you should try to install Docker Toolbox instead:
-    --> Docker toolbox for Mac: https://docs.docker.com/toolbox/toolbox_install_mac/
-    --> Docker toolbox for Windows: https://docs.docker.com/toolbox/toolbox_install_windows/
+   
+   **NOTE**: if you are unable to install Docker this may be because you have an older machine in which case you should try to install Docker Toolbox instead:   
+    --> Docker toolbox for Mac: https://docs.docker.com/toolbox/toolbox_install_mac/   
+    --> Docker toolbox for Windows: https://docs.docker.com/toolbox/toolbox_install_windows/   
 
 2) Clone this repository if you have not already:
 ```

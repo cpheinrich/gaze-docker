@@ -25,12 +25,14 @@ This will (i) login with Docker (ii) pull the latest Docker app and (iii) run ga
 
 
 To verify that this ran correctly, check to make sure there is a new video called `tracking_sample_output.mp4`
-in the `videos` directory which includes the gaze tracking output. 
+in the `videos` directory which includes the gaze tracking output, as well as a file `tracking_sample_output.csv` which contains the gaze parameters (theta and phi) for each frame of the video.
 
 
 ## Running gaze inference on your own data
 
 You can run gaze inference on your own videos. You must place the video inside of the `/videos` directory to give docker access. Follow the steps below.
+
+### Single video inference
 
 1) Place a video inside of the `videos/` directory. For example, suppose you add the video `my_video.mov` to this directory. The next step is to:
 
@@ -40,8 +42,23 @@ You can run gaze inference on your own videos. You must place the video inside o
 docker run -v $PWD/videos:/src/videos cpheinrich/gaze:latest --from_video /src/videos/my_video.mov
 ```
 
+### Bulk video inference
+
+1) Place a folder of videos inside of the `videos/` directory. For example, suppose you copy a folder called `patient_videos/` which contains multiple videos into the `videos` directory. The next step is to:
+
+2) Run the command as follows:
+
+```
+docker run -v $PWD/videos:/src/videos cpheinrich/gaze:latest --from_dir /src/videos/patient_videos/
+```
+
 **NOTE**: It is important that the first part of the path of the argument `--from_video` is `/src/videos/` then the rest of the path will be the relative path of your video
-inside of the videos directory. For example, if you add a video inside of a new subdirectory such as  `/videos/patient_videos/patient_video_1.mp4` then you would you use `--from_video /src/videos/patient_videos/patient_video_1.mp4`
+inside of the videos directory.
+
+
+## Interpreting the output
+
+We write an output video and output `.csv` file. The video contains a visualization of the output of the network annotated on top of the video. Meanwhile the `.csv` file contains the gaze parameters tracked for each frame. If the network was unable to recover gaze parameters, that row will be empty. Otherwise, there will be two columns `gaze_theta` and `gaze_phi`. These parameters specify the gaze in spherical coordinates. `gaze_theta` is the yaw angle, and is analogous to longitude on a globe, meanwhile `gaze_phi` is the pitch angle, and is analogous to the latitude on a globe. For more information on spherical coordinates see: https://en.wikipedia.org/wiki/Spherical_coordinate_system.
 
 
 

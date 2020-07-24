@@ -25,7 +25,7 @@ This will (i) login with Docker (ii) pull the latest Docker app and (iii) run ga
 
 
 To verify that this ran correctly, check to make sure there is a new video called `tracking_sample_output.mp4`
-in the `videos` directory which includes the gaze tracking output, as well as a file `tracking_sample_output.csv` which contains the gaze parameters (theta and phi) for each frame of the video.
+in the `videos` directory which includes the gaze tracking output, as well as a file `tracking_sample_output.csv` which contains the gaze parameters (theta and phi) for each eye and each frame of the video.
 
 
 ## Running gaze inference on your own data
@@ -58,7 +58,7 @@ inside of the videos directory.
 
 ## Interpreting the output
 
-We write an output video and output `.csv` file. The video contains a visualization of the output of the network annotated on top of the video. Meanwhile the `.csv` file contains the gaze parameters tracked for each frame. If the network was unable to recover gaze parameters, that row will be empty. Otherwise, there will be two columns `gaze_theta` and `gaze_phi`. These parameters specify the gaze in spherical coordinates. `gaze_theta` is the yaw angle, and is analogous to longitude on a globe, meanwhile `gaze_phi` is the pitch angle, and is analogous to the latitude on a globe. For more information on spherical coordinates see: https://en.wikipedia.org/wiki/Spherical_coordinate_system.
+We write an output video and output `.csv` file. The video contains a visualization of the output of the network annotated on top of the video. Meanwhile the `.csv` file contains the gaze parameters tracked for each frame. If the network was unable to recover gaze parameters, that row will be empty. Otherwise, there will be 4 columns `left_theta`, `left_phi` and `right_theta`, `right_phi`. These parameters specify the gaze of the left and right eyes in spherical coordinates. `theta` is the yaw angle, and is analogous to longitude on a globe, meanwhile `phi` is the pitch angle, and is analogous to the latitude on a globe. For more information on spherical coordinates see: https://en.wikipedia.org/wiki/Spherical_coordinate_system.
 
 
 
